@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet title="XSL_formatting" type="text/xsl" href="/shared/bsp/xsl/rss/nolsol.xsl"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+    <channel>
+        <title><![CDATA[BBC News - World]]></title>
+        <description><![CDATA[BBC News - World]]></description>
+        <link>http://www.bbc.co.uk/news/</link>
+        <image>
+            <url>http://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif</url>
+            <title>BBC News - World</title>
+            <link>http://www.bbc.co.uk/news/</link>
+        </image>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Mon, 22 Jan 2018 10:53:08 GMT</lastBuildDate>
+        <copyright><![CDATA[Copyright: (C) British Broadcasting Corporation, see http://news.bbc.co.uk/2/hi/help/rss/4498287.stm for terms and conditions of reuse.]]></copyright>
+        <language><![CDATA[en-gb]]></language>
+        <ttl>15</ttl>
+        <item>
+            <title><![CDATA[Some silly news]]></title>
+            <description><![CDATA[Many federal services will not open on Monday as politicians struggle to agree on a new budget.]]></description>
+            <link>http://www.bbc.co.uk/news/world-us-canada-42769951</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-us-canada-42769951</guid>
+            <pubDate>Mon, 22 Jan 2018 07:31:56 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/3D71/production/_99692751_lib_getty976.jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Some funny news]]></title>
+            <description><![CDATA[Spain's prosecutor asks for a warrant to be reissued as Carles Puigdemont arrives in Copenhagen.]]></description>
+            <link>http://www.bbc.co.uk/news/world-europe-42772758</link>
+            <guid isPermaLink="true">http://www.bbc.co.uk/news/world-europe-42772758</guid>
+            <pubDate>Mon, 22 Jan 2018 10:27:29 GMT</pubDate>
+            <media:thumbnail width="976" height="549" url="http://c.files.bbci.co.uk/6D87/production/_99693082_mediaitem99693081.jpg"/>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,16 @@
+@startuml
+hide empty members
+
+class Catalogue {
+  + {static} Inventory : Mapping[str, Product]
+  + inventory : Inventory
+  + __init__(self, inventory: Inventory) -> None
+  + add_product(self, product: Product) -> None
+  + __contains__(self, id: str) -> bool
+}
+
+class Product {
+}
+
+Catalogue "1" *-- "0..n" Product
+@enduml

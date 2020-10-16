@@ -1,0 +1,24 @@
+@startuml
+hide empty members
+
+class News {
+    + title: str
+    + pub_date: str
+    + __init__(title: str, pub_date: str) -> None
+    + __str__() -> str
+}
+
+abstract class NewsFeeder {
+    + rss_url: str
+    + __init__(rss_url: str) -> None
+    + {abstract} get_feed() -> List[News]
+}
+
+class BBCNewsFeeder {
+    + __init__(rss_url: str) -> None
+    + get_feed() -> List[News]
+}
+
+NewsFeeder <|-- BBCNewsFeeder
+NewsFeeder <.. News : "uses"
+@enduml

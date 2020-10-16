@@ -1,0 +1,12 @@
+@startuml
+hide empty members
+
+class Moveable {
+    + __init__(self, x : float, y : float)
+    + move(dx : float, dy : float)
+    __
+    + x : float
+    + y : float
+}
+
+@enduml

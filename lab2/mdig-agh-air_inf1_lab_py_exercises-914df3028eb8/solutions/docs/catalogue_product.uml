@@ -1,0 +1,11 @@
+@startuml
+class Product {
+  + id : str
+  + name : str
+  + price : float
+
+  + __init__(self, id_: str, name: str, price: float) -> None
+  + __str__(self) -> str
+  + __eq__(self, other) -> bool
+}
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+abstract class Shape {
+	+ Shape(double x, double y)
+	+ {abstract} area() : double
+	+ ~Shape()
+	__
+	- _x : double
+	- _y : double
+}
+
+class Square {
+	+ Square(double x, double y, double side)
+	+ area() : double
+	__
+	- _side : double
+}
+Shape <|-- Square
+
+class Circle {
+	+ Circle(double x, double y, double radius)
+	+ area() : double
+	__
+	- _radius : double
+}
+Shape <|-- Circle
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+abstract class Vehicle {
+	+ __init__(self, id_ : str, brand : str)
+	+ {abstract} max_speed(self) : float
+	+ __str__(self) : str
+	__
+	+ id : str
+	+ brand : str
+}
+
+class Car {
+	+ __init__(self, id_ : str, brand : str, engine_hp : float)
+	+ max_speed(self) : float
+	__
+	+ engine_hp : double
+}
+Vehicle <|-- Car
+
+class Bicycle {
+	+ __init__(self, id_ : str, brand : str, n_gears : int)
+	+ max_speed(self) : float
+	__
+	+ n_gears : int
+}
+Vehicle <|-- Bicycle
+@enduml
