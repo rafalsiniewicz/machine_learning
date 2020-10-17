@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from dicts import *
+from skeletons.basics.dicts import *
 
 
 class DictsTest(unittest.TestCase):

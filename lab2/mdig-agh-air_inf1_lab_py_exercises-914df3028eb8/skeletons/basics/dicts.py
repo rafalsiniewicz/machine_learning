@@ -23,7 +23,9 @@ def dict_intro() -> None:
 
     (zob. "test" w pliku test/test_dict_intro.py)
     """
-    pass
+    d: {str: int} = {"Adam": 2, "Bogdan": 4, "Cezary": 1}
+    for k, v in d.items():
+        print(k, " = ", v)
 
 
 # Alias `Menu` na typ `Dict[str, float]` poprawia czytelność kodu
@@ -37,7 +39,7 @@ def update_price(menu: Menu, dish: str) -> None:
     :param menu: menu, które należy zaktualizować
     :param dish: danie, którego cena powinna zostać zmieniona
     """
-    pass
+    menu[dish] += 50
 
 
 def fix_key(dct: Dict[str, Any], incorrect_key: str, correct_key: str) -> Dict[str, Any]:
@@ -53,7 +55,12 @@ def fix_key(dct: Dict[str, Any], incorrect_key: str, correct_key: str) -> Dict[s
     :param correct_key: poprawny klucz, który powinien zastąpić błędny klucz
     :return: poprawny słownik
     """
-    pass
+    new = dict(dct)
+    if incorrect_key in new.keys():
+        new[correct_key] = new[incorrect_key]
+        del new[incorrect_key]
+
+    return new
 
 
 def update_all_prices(menu: Menu) -> None:
@@ -61,13 +68,14 @@ def update_all_prices(menu: Menu) -> None:
 
     :param menu: menu, które należy zaktualizować
     """
-    pass
+    for k in menu:
+        menu[k] += 50
 
 
 # TODO: Zdefiniuj alias `ClassRegister` na typ umożliwiający przechowywanie
 #   informacji o ocenach poszczególnych uczniów, tj. mapowanie nazwy
 #   ucznia na listę ocen (będących liczbami zmiennoprzecinkowymi).
-ClassRegister = None
+ClassRegister = Dict[str, Set[float]]
 
 
 def average_grades_1(register: ClassRegister) -> Dict[str, float]:
@@ -78,7 +86,10 @@ def average_grades_1(register: ClassRegister) -> Dict[str, float]:
     :param register: dziennik ocen
     :return: mapowanie nazwy ucznia na średnią jego ocen
     """
-    pass
+    for k in register:
+        register[k] = sum(register[k]) / float(len(register[k]))
+
+    return register
 
 
 # [OPT]
@@ -91,7 +102,13 @@ def average_grades_2(register: ClassRegister) -> Dict[str, Optional[float]]:
     :return: mapowanie nazwy ucznia na średnią jego ocen (albo None, jeśli
         dany uczeń nie posiada ocen)
     """
-    pass
+    for k in register:
+        if register[k]:
+            register[k] = sum(register[k]) / float(len(register[k]))
+        else:
+            register[k] = None
+
+    return register
 
 
 def letters_frequencies(s: str) -> Dict[str, int]:
@@ -100,7 +117,14 @@ def letters_frequencies(s: str) -> Dict[str, int]:
     :param s: łańcuch znaków, dla którego obliczana jest częstość wystąpień liter
     :return: mapowanie litery na częstość jej występowania
     """
-    pass
+    d: {str, int} = dict()
+    for i in s:
+        if i not in d:
+            d[i] = 1
+        else:
+            d[i] += 1
+
+    return d
 
 
 def letters_frequency_2(s: str) -> Tuple[Dict[str, int], int]:
@@ -113,7 +137,9 @@ def letters_frequency_2(s: str) -> Tuple[Dict[str, int], int]:
     :return: 2-elementowa krotka złożona ze słownika częstości występowania
         poszczególnych liter oraz z liczby unikalnych liter
     """
-    pass
+    d = letters_frequencies(s)
+    return (d, len(d.keys()))
+
 
 
 def census(register: Dict[str, Dict[str, Any]]) -> Tuple[Dict[str, int], float]:
@@ -122,15 +148,27 @@ def census(register: Dict[str, Dict[str, Any]]) -> Tuple[Dict[str, int], float]:
     Przyjmij, że rejestr zawiera dane choć jednej osoby oraz że informacje
     w słowniku są poprawne (nie ma brakujących kluczy itd.).
 
-    :param register: spis osób w formacie {N: {'address': {'country': C}, 'age': A}
+    :param register: spis osób w formacie {N: {'address': {'country': C}, 'age': A}}
         gdzie N - nazwa osoby; C - państwo, z którego osoba pochodzi; A - wiek osoby
     :return: 2-elementowa krotka złożona ze słownika opisującego liczbę osób
         z poszczególnych państw oraz ze średniego wieku wszystkich osób
     """
-    pass
+    d: {str, int} = dict()
+    age_sum = 0
+    for name in register:
+        country = register[name]["address"]["country"]
+        if country not in d:
+            d[country] = 1
+        else:
+            d[country] += 1
+
+        age_sum += register[name]["age"]
+
+    return (d, age_sum / float(len(register.keys())))
 
 
-# lista zakupowa - mapowanie nazwy produktu na liczbę sztuk (do kupienia)
+
+    # lista zakupowa - mapowanie nazwy produktu na liczbę sztuk (do kupienia)
 ShoppingList = Dict[str, int]
 
 
@@ -141,7 +179,15 @@ def sum_shopping_lists(list1: ShoppingList, list2: ShoppingList) -> ShoppingList
     :param list2: druga lista zakupowa
     :return: scalone listy zakupowe
     """
-    pass
+    d: {str, int} = dict()
+    for (k, v), (k2, v2) in zip(list1.items(), list2.items()):
+        d[k] = v
+        if k2 not in d:
+            d[k2] = v2
+        else:
+            d[k2] += v2
+
+    return d
 
 
 def sum_shopping_lists_nonempty(list1: ShoppingList, list2: ShoppingList) -> ShoppingList:
@@ -153,7 +199,12 @@ def sum_shopping_lists_nonempty(list1: ShoppingList, list2: ShoppingList) -> Sho
     :param list2: druga lista zakupowa
     :return: scalone listy zakupowe
     """
-    pass
+    d = sum_shopping_lists(list1, list2)
+    for i in sum_shopping_lists(list1, list2):
+        if d[i] == 0:
+            del d[i]
+
+    return d
 
 
 def filter_pesels_by_name_initial(persons: Dict[str, str], name_initial: str) -> Set[str]:
@@ -166,4 +217,4 @@ def filter_pesels_by_name_initial(persons: Dict[str, str], name_initial: str) ->
     :param name_initial: inicjał imienia użyty do filtrowania
     :return: zbiór PESEL-i osób
     """
-    pass
+    return {pesel for pesel in persons if persons[pesel][0] == name_initial}
