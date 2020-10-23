@@ -19,7 +19,7 @@ def get_unique_letters(s: str) -> Set[str]:
     :return: zbiór unikalnych liter w łańcuchu znaków, jeśli łańcuch zawiera co
         najmniej 3 znaki, inaczej zbiór pusty
     """
-    pass
+    return set(s) if len(s) > 3 else set()
 
 
 # lista zakupowa - mapowanie nazwy produktu na liczbę sztuk (do kupienia)
@@ -39,7 +39,7 @@ def products_to_buy(list1: ShoppingList, list2: ShoppingList) -> Set[str]:
     :param list2: druga lista zakupowa
     :return: zbiór produktów, które należy kupić
     """
-    pass
+    return set(list(list1.keys()) + list(list2.keys()))
 
 
 def products_only_on_one_list(list1: ShoppingList, list2: ShoppingList) -> int:
@@ -52,7 +52,7 @@ def products_only_on_one_list(list1: ShoppingList, list2: ShoppingList) -> int:
     :param list2: druga lista zakupowa
     :return: liczba produktów, które występują tylko na jednej z list zakupowych
     """
-    pass
+    return len(set(list1.keys()) - set(list2.keys())) * 2
 
 
 def two_dice_rolls_combinations() -> Dict[int, Set[Tuple[int, int]]]:

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from extras import *
+from skeletons.basics.extras import *
 
 
 class GetUniqueLettersTest(unittest.TestCase):
