@@ -16,9 +16,10 @@ def get_vocabulary_dict() -> Dict[int, str]:
     # - Each line contains a word's ID and the word itself.
     # The output dictionary should map word's ID on the word itself, e.g.:
     #   {1: 'aa', 2: 'ab', ...}
+
     d = dict()
-    f = open('data/vocab.txt', 'r') 
-    for line in f:
+    f = open('data/vocab.txt', 'r')
+    for line in f: 
     	d[int(line.split()[0])] = line.split()[1]
 
     return d

@@ -33,28 +33,30 @@ def process_email(email_contents: str) -> List[int]:
     # email_contents = email_contents[header_start+len(header_token):]
 
     # FIXME: Convert email content to lower case.
-    email_contents = email_contents
+    email_contents = email_contents.lower()
+
 
     # Strip all HTML
     # Looks for any expression that starts with < and ends with > and replace
     # and does not have any < or > in the tag it with a space
     email_contents = re.sub('<[^<>]+>', ' ', email_contents)
 
+
     # FIXME: Handle numbers.
     # Convert all sequences of digits (0-9) to a 'number' token.
-    email_contents = re.sub('FIXME', 'number', email_contents)
+    email_contents = re.sub('[0-9]', 'number', email_contents)
 
     # FIXME: Handle URLs.
     # Convert all strings starting with http:// or https:// to a 'httpaddr' token.
-    email_contents = re.sub('FIXME', 'httpaddr', email_contents)
+    email_contents = re.sub('^http:\/\/ | https:\/\/', 'httpaddr', email_contents)
 
     # FIXME: Handle email addresses.
     # Convert all strings with @ in the middle to a 'emailaddr' token.
-    email_contents = re.sub('FIXME', 'emailaddr', email_contents)
+    email_contents = re.sub('.+[@].+', 'emailaddr', email_contents)
 
     # FIXME: Handle $ sign
     # Convert all sequences of $ signs to a 'dollar' token.
-    email_contents = re.sub('FIXME', 'dollar', email_contents)
+    email_contents = re.sub('[$]+', 'dollar', email_contents)
 
     # ========================== Tokenize Email ===========================
 
@@ -101,7 +103,11 @@ def process_email(email_contents: str) -> List[int]:
         #       str2). It will return 1 only if the two strings are equivalent.
         #
 
-        raise NotImplementedError()
+        for w in vocabulary_dict:
+            if vocabulary_dict[w] == token:
+                word_indices.append(w)
+
+        # raise NotImplementedError()
 
         # ========================= END OF YOUR CODE ==========================
 

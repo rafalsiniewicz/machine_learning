@@ -53,7 +53,8 @@ def email_features(word_indices: List[int]) -> np.ndarray:
     #
     # =========================================================================
     bfv = [0 if i not in word_indices else 1 for i in range(n_words)]
-    return bfv
+    
+    return np.array(bfv, ndmin=2)
 
     # raise NotImplementedError()
 
